@@ -1,0 +1,527 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 77;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		347A59EA2DDB4BD5002DC8D5 /* RealmSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 347A59E92DDB4BD5002DC8D5 /* RealmSwift */; };
+		34F5B5C12DDB47DA00867FDD /* FirebaseCrashlytics in Frameworks */ = {isa = PBXBuildFile; productRef = 34F5B5C02DDB47DA00867FDD /* FirebaseCrashlytics */; };
+		34F5B5C42DDB47E400867FDD /* StorageManager in Frameworks */ = {isa = PBXBuildFile; productRef = 34F5B5C32DDB47E400867FDD /* StorageManager */; };
+		34F5B5C72DDB47EE00867FDD /* ShadowImageButton in Frameworks */ = {isa = PBXBuildFile; productRef = 34F5B5C62DDB47EE00867FDD /* ShadowImageButton */; };
+		34F5B5CA2DDB47F700867FDD /* Utilities in Frameworks */ = {isa = PBXBuildFile; productRef = 34F5B5C92DDB47F700867FDD /* Utilities */; };
+		34F5B5CD2DDB480200867FDD /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = 34F5B5CC2DDB480200867FDD /* SnapKit */; };
+		34F5B5D02DDB482400867FDD /* PremiumManager in Frameworks */ = {isa = PBXBuildFile; productRef = 34F5B5CF2DDB482400867FDD /* PremiumManager */; };
+		34F5B5D32DDB483000867FDD /* CustomBlurEffectView in Frameworks */ = {isa = PBXBuildFile; productRef = 34F5B5D22DDB483000867FDD /* CustomBlurEffectView */; };
+		34F5B5D62DDB483A00867FDD /* CustomNavigationView in Frameworks */ = {isa = PBXBuildFile; productRef = 34F5B5D52DDB483A00867FDD /* CustomNavigationView */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		34F5B4F02DDB43F900867FDD /* SplitScreen.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SplitScreen.app; sourceTree = BUILT_PRODUCTS_DIR; };
+/* End PBXFileReference section */
+
+/* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
+		34F5B5022DDB43FB00867FDD /* Exceptions for "SplitScreen" folder in "SplitScreen" target */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				Info.plist,
+			);
+			target = 34F5B4EF2DDB43F900867FDD /* SplitScreen */;
+		};
+/* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
+
+/* Begin PBXFileSystemSynchronizedRootGroup section */
+		34F5B4F22DDB43F900867FDD /* SplitScreen */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			exceptions = (
+				34F5B5022DDB43FB00867FDD /* Exceptions for "SplitScreen" folder in "SplitScreen" target */,
+			);
+			path = SplitScreen;
+			sourceTree = "<group>";
+		};
+/* End PBXFileSystemSynchronizedRootGroup section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		34F5B4ED2DDB43F900867FDD /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				34F5B5C42DDB47E400867FDD /* StorageManager in Frameworks */,
+				34F5B5CA2DDB47F700867FDD /* Utilities in Frameworks */,
+				34F5B5D62DDB483A00867FDD /* CustomNavigationView in Frameworks */,
+				347A59EA2DDB4BD5002DC8D5 /* RealmSwift in Frameworks */,
+				34F5B5D02DDB482400867FDD /* PremiumManager in Frameworks */,
+				34F5B5D32DDB483000867FDD /* CustomBlurEffectView in Frameworks */,
+				34F5B5C72DDB47EE00867FDD /* ShadowImageButton in Frameworks */,
+				34F5B5C12DDB47DA00867FDD /* FirebaseCrashlytics in Frameworks */,
+				34F5B5CD2DDB480200867FDD /* SnapKit in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		34F5B4E72DDB43F900867FDD = {
+			isa = PBXGroup;
+			children = (
+				34F5B4F22DDB43F900867FDD /* SplitScreen */,
+				34F5B4F12DDB43F900867FDD /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		34F5B4F12DDB43F900867FDD /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				34F5B4F02DDB43F900867FDD /* SplitScreen.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		34F5B4EF2DDB43F900867FDD /* SplitScreen */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 34F5B5032DDB43FB00867FDD /* Build configuration list for PBXNativeTarget "SplitScreen" */;
+			buildPhases = (
+				34F5B4EC2DDB43F900867FDD /* Sources */,
+				34F5B4ED2DDB43F900867FDD /* Frameworks */,
+				34F5B4EE2DDB43F900867FDD /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			fileSystemSynchronizedGroups = (
+				34F5B4F22DDB43F900867FDD /* SplitScreen */,
+			);
+			name = SplitScreen;
+			packageProductDependencies = (
+				34F5B5C02DDB47DA00867FDD /* FirebaseCrashlytics */,
+				34F5B5C32DDB47E400867FDD /* StorageManager */,
+				34F5B5C62DDB47EE00867FDD /* ShadowImageButton */,
+				34F5B5C92DDB47F700867FDD /* Utilities */,
+				34F5B5CC2DDB480200867FDD /* SnapKit */,
+				34F5B5CF2DDB482400867FDD /* PremiumManager */,
+				34F5B5D22DDB483000867FDD /* CustomBlurEffectView */,
+				34F5B5D52DDB483A00867FDD /* CustomNavigationView */,
+				347A59E92DDB4BD5002DC8D5 /* RealmSwift */,
+			);
+			productName = SplitScreen;
+			productReference = 34F5B4F02DDB43F900867FDD /* SplitScreen.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		34F5B4E82DDB43F900867FDD /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = 1;
+				LastSwiftUpdateCheck = 1600;
+				LastUpgradeCheck = 1600;
+				TargetAttributes = {
+					34F5B4EF2DDB43F900867FDD = {
+						CreatedOnToolsVersion = 16.0;
+					};
+				};
+			};
+			buildConfigurationList = 34F5B4EB2DDB43F900867FDD /* Build configuration list for PBXProject "SplitScreen" */;
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+				fr,
+				de,
+				"fr-CA",
+				it,
+				"pt-BR",
+				es,
+				"es-419",
+				"pt-PT",
+				"es-US",
+			);
+			mainGroup = 34F5B4E72DDB43F900867FDD;
+			minimizedProjectReferenceProxies = 1;
+			packageReferences = (
+				34F5B5BF2DDB47DA00867FDD /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
+				34F5B5C22DDB47E400867FDD /* XCRemoteSwiftPackageReference "StorageManager" */,
+				34F5B5C52DDB47EE00867FDD /* XCRemoteSwiftPackageReference "ShadowImageButton" */,
+				34F5B5C82DDB47F700867FDD /* XCRemoteSwiftPackageReference "Utilities" */,
+				34F5B5CB2DDB480200867FDD /* XCRemoteSwiftPackageReference "SnapKit" */,
+				34F5B5CE2DDB482400867FDD /* XCRemoteSwiftPackageReference "PremiumManager" */,
+				34F5B5D12DDB483000867FDD /* XCRemoteSwiftPackageReference "CustomBlurEffectView" */,
+				34F5B5D42DDB483A00867FDD /* XCRemoteSwiftPackageReference "CustomNavigationView" */,
+				347A59E82DDB4BD5002DC8D5 /* XCRemoteSwiftPackageReference "realm-swift" */,
+			);
+			preferredProjectObjectVersion = 77;
+			productRefGroup = 34F5B4F12DDB43F900867FDD /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				34F5B4EF2DDB43F900867FDD /* SplitScreen */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		34F5B4EE2DDB43F900867FDD /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		34F5B4EC2DDB43F900867FDD /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin XCBuildConfiguration section */
+		34F5B5042DDB43FB00867FDD /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_ALTERNATE_APPICON_NAMES = "AppIcon-1";
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = "";
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = SplitScreen/Info.plist;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
+				INFOPLIST_KEY_UIUserInterfaceStyle = Light;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = instagram.follower.tracker;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 1;
+			};
+			name = Debug;
+		};
+		34F5B5052DDB43FB00867FDD /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_ALTERNATE_APPICON_NAMES = "AppIcon-1";
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = "";
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = SplitScreen/Info.plist;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
+				INFOPLIST_KEY_UIUserInterfaceStyle = Light;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = instagram.follower.tracker;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 1;
+			};
+			name = Release;
+		};
+		34F5B5062DDB43FB00867FDD /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 18.0;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG $(inherited)";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		34F5B5072DDB43FB00867FDD /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 18.0;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		34F5B4EB2DDB43F900867FDD /* Build configuration list for PBXProject "SplitScreen" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				34F5B5062DDB43FB00867FDD /* Debug */,
+				34F5B5072DDB43FB00867FDD /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		34F5B5032DDB43FB00867FDD /* Build configuration list for PBXNativeTarget "SplitScreen" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				34F5B5042DDB43FB00867FDD /* Debug */,
+				34F5B5052DDB43FB00867FDD /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		347A59E82DDB4BD5002DC8D5 /* XCRemoteSwiftPackageReference "realm-swift" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/realm/realm-swift";
+			requirement = {
+				kind = exactVersion;
+				version = 10.48.0;
+			};
+		};
+		34F5B5BF2DDB47DA00867FDD /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/firebase/firebase-ios-sdk.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 11.12.0;
+			};
+		};
+		34F5B5C22DDB47E400867FDD /* XCRemoteSwiftPackageReference "StorageManager" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/reganomika/StorageManager";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.0.0;
+			};
+		};
+		34F5B5C52DDB47EE00867FDD /* XCRemoteSwiftPackageReference "ShadowImageButton" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/reganomika/ShadowImageButton";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.1.3;
+			};
+		};
+		34F5B5C82DDB47F700867FDD /* XCRemoteSwiftPackageReference "Utilities" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/reganomika/Utilities";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.0.3;
+			};
+		};
+		34F5B5CB2DDB480200867FDD /* XCRemoteSwiftPackageReference "SnapKit" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/SnapKit/SnapKit";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.7.1;
+			};
+		};
+		34F5B5CE2DDB482400867FDD /* XCRemoteSwiftPackageReference "PremiumManager" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/reganomika/PremiumManager";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.0.2;
+			};
+		};
+		34F5B5D12DDB483000867FDD /* XCRemoteSwiftPackageReference "CustomBlurEffectView" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/perfectdim/CustomBlurEffectView";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 0.0.3;
+			};
+		};
+		34F5B5D42DDB483A00867FDD /* XCRemoteSwiftPackageReference "CustomNavigationView" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/reganomika/CustomNavigationView";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.0.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		347A59E92DDB4BD5002DC8D5 /* RealmSwift */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 347A59E82DDB4BD5002DC8D5 /* XCRemoteSwiftPackageReference "realm-swift" */;
+			productName = RealmSwift;
+		};
+		34F5B5C02DDB47DA00867FDD /* FirebaseCrashlytics */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 34F5B5BF2DDB47DA00867FDD /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseCrashlytics;
+		};
+		34F5B5C32DDB47E400867FDD /* StorageManager */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 34F5B5C22DDB47E400867FDD /* XCRemoteSwiftPackageReference "StorageManager" */;
+			productName = StorageManager;
+		};
+		34F5B5C62DDB47EE00867FDD /* ShadowImageButton */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 34F5B5C52DDB47EE00867FDD /* XCRemoteSwiftPackageReference "ShadowImageButton" */;
+			productName = ShadowImageButton;
+		};
+		34F5B5C92DDB47F700867FDD /* Utilities */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 34F5B5C82DDB47F700867FDD /* XCRemoteSwiftPackageReference "Utilities" */;
+			productName = Utilities;
+		};
+		34F5B5CC2DDB480200867FDD /* SnapKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 34F5B5CB2DDB480200867FDD /* XCRemoteSwiftPackageReference "SnapKit" */;
+			productName = SnapKit;
+		};
+		34F5B5CF2DDB482400867FDD /* PremiumManager */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 34F5B5CE2DDB482400867FDD /* XCRemoteSwiftPackageReference "PremiumManager" */;
+			productName = PremiumManager;
+		};
+		34F5B5D22DDB483000867FDD /* CustomBlurEffectView */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 34F5B5D12DDB483000867FDD /* XCRemoteSwiftPackageReference "CustomBlurEffectView" */;
+			productName = CustomBlurEffectView;
+		};
+		34F5B5D52DDB483A00867FDD /* CustomNavigationView */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 34F5B5D42DDB483A00867FDD /* XCRemoteSwiftPackageReference "CustomNavigationView" */;
+			productName = CustomNavigationView;
+		};
+/* End XCSwiftPackageProductDependency section */
+	};
+	rootObject = 34F5B4E82DDB43F900867FDD /* Project object */;
+}
