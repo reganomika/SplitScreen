@@ -15,30 +15,30 @@ final class ReviewController: UIViewController {
         static let blurColor = UIColor(hex: "171313")
         static let blurAlpha: CGFloat = 0.3
         
-        static let contentBackground = UIColor(hex: "0F1C35")
-        static let contentCornerRadius: CGFloat = 30
-        static let contentHeight: CGFloat = 547
+        static let contentBackground = UIColor.white
+        static let contentCornerRadius: CGFloat = 28
+        static let contentHeight: CGFloat = 413
         
         static let titleFontSize: CGFloat = 24
         static let subtitleFontSize: CGFloat = 18
         static let buttonFontSize: CGFloat = 16
         
-        static let subtitleColor = UIColor(hex: "ADACB8")
+        static let subtitleColor = UIColor(hex: "B2B2B2")
         static let closeButtonAlpha: CGFloat = 0.44
         
-        static let horizontalInset: CGFloat = 22
-        static let wideHorizontalInset: CGFloat = 30
-        static let extraWideInset: CGFloat = 39
+        static let horizontalInset: CGFloat = 24
+        static let wideHorizontalInset: CGFloat = 24
+        static let extraWideInset: CGFloat = 24
         
         static let buttonHeight: CGFloat = 69
         static let closeButtonHeight: CGFloat = 21
         static let buttonCornerRadius: CGFloat = 18
         static let buttonBorderWidth: CGFloat = 6
         
-        static let imageTopInset: CGFloat = 15
-        static let titleBottomOffset: CGFloat = 12
-        static let subtitleBottomOffset: CGFloat = 30
-        static let buttonBottomOffset: CGFloat = 24
+        static let imageTopInset: CGFloat = 0
+        static let titleBottomOffset: CGFloat = 17
+        static let subtitleBottomOffset: CGFloat = 31
+        static let buttonBottomOffset: CGFloat = 11
         static let closeButtonBottomInset: CGFloat = 22
         
         static let shadowRadius: CGFloat = 14.7
@@ -47,9 +47,9 @@ final class ReviewController: UIViewController {
     }
     
     private enum Strings {
-        static let title = "We’d love your feedback!".localized
-        static let subtitle = "Tell us what you think about our app — we’re all ears!".localized
-        static let buttonTitle = "Write a feedback".localized
+        static let title = "Would you recommend us?".localized
+        static let subtitle = "Tell us your thoughts – help us improve your experience".localized
+        static let buttonTitle = "Share feedback".localized
     }
     
     // MARK: - UI Components
@@ -77,7 +77,7 @@ final class ReviewController: UIViewController {
         $0.attributedText = Strings.title.localized.attributedString(
             font: .font(weight: .bold, size: Constants.titleFontSize),
             aligment: .center,
-            color: UIColor.white,
+            color: .init(hex: "303030"),
             lineSpacing: 5,
             maxHeight: 50
         )
@@ -104,10 +104,10 @@ final class ReviewController: UIViewController {
                 image: nil
             ),
             backgroundImageConfig: .init(
-                image: UIImage(named: "settingsPremiumBackground"),
+                image: UIImage(named: "buttonBackground"),
                 cornerRadius: Constants.buttonCornerRadius,
                 shadowConfig: .init(
-                    color: UIColor(hex: "0044FF"),
+                    color: UIColor(hex: "2583FF"),
                     opacity: Constants.shadowOpacity,
                     offset: Constants.shadowOffset,
                     radius: Constants.shadowRadius
@@ -156,7 +156,7 @@ final class ReviewController: UIViewController {
         imageView.snp.makeConstraints {
             $0.top.equalToSuperview().inset(Constants.imageTopInset)
             $0.centerX.equalToSuperview()
-            $0.bottom.equalTo(titleLabel.snp.top).inset(Constants.imageTopInset)
+            $0.height.equalTo(209)
         }
         
         titleLabel.snp.makeConstraints {
@@ -172,7 +172,7 @@ final class ReviewController: UIViewController {
         feedbackButton.snp.makeConstraints {
             $0.leading.trailing.equalToSuperview().inset(Constants.wideHorizontalInset)
             $0.height.equalTo(Constants.buttonHeight)
-            $0.bottom.equalTo(view.safeAreaLayoutGuide).inset(39)
+            $0.bottom.equalTo(view.safeAreaLayoutGuide).inset(Constants.buttonBottomOffset)
         }
         
         closeButton.snp.makeConstraints {
@@ -209,7 +209,21 @@ final class ReviewController: UIViewController {
     }
     
     private func presentFeedbackForm() {
-        guard let url = URL(string: "itms-apps:itunes.apple.com/us/app/apple-store/id\(Config.appId)?action=write-review") else { return }
-        present(SFSafariViewController(url: url), animated: true)
+        let appId = Config.appId
+        let urlString = "https://itunes.apple.com/app/id\(appId)?action=write-review"
+        
+        guard let url = URL(string: urlString) else {
+            print("Invalid URL for feedback form")
+            return
+        }
+        
+        let safariVC = SFSafariViewController(url: url)
+        safariVC.modalPresentationStyle = .formSheet
+        
+        if let topController = UIApplication.topViewController(){
+            topController.present(safariVC, animated: true, completion: nil)
+        } else {
+            UIApplication.shared.open(url, options: [:], completionHandler: nil)
+        }
     }
 }
