@@ -11,7 +11,7 @@ final class TabBarController: UIViewController {
         return view
     }()
     
-    private let viewControllers = [
+    let viewControllers = [
         UINavigationController(rootViewController: SplitScreenController()),
         UINavigationController(rootViewController: FavoritesController()),
         UINavigationController(rootViewController: AppSettingsViewController())

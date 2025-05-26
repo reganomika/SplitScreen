@@ -1,0 +1,23 @@
+{
+  "images" : [
+    {
+      "filename" : "pepicons-pencil_dots-y.png",
+      "idiom" : "universal",
+      "scale" : "1x"
+    },
+    {
+      "filename" : "pepicons-pencil_dots-y@2x.png",
+      "idiom" : "universal",
+      "scale" : "2x"
+    },
+    {
+      "filename" : "pepicons-pencil_dots-y@3x.png",
+      "idiom" : "universal",
+      "scale" : "3x"
+    }
+  ],
+  "info" : {
+    "author" : "xcode",
+    "version" : 1
+  }
+}

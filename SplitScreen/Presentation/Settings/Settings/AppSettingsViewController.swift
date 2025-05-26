@@ -1,4 +1,5 @@
 import UIKit
+import WebKit
 import SnapKit
 import SafariServices
 import PremiumManager
@@ -101,14 +102,33 @@ extension AppSettingsViewController: UITableViewDataSource, UITableViewDelegate 
         case .termsOfService:
             openWebView(Config.terms)
         case .alternateIcons:
-            // TODO: - remove
             presentCrossDissolve(vc: IconsController())
         case .clearCache:
-            presentCrossDissolve(vc: ReviewController())
+            clearWebCache(presenting: self)
         case .share:
             let shareURL = URL(string: "https://apps.apple.com/us/app/\(Config.appId)")!
             let vc = UIActivityViewController(activityItems: [shareURL], applicationActivities: nil)
             present(vc, animated: true)
+        }
+    }
+    
+    func clearWebCache(presenting viewController: UIViewController) {
+        let dataStore = WKWebsiteDataStore.default()
+        let types = WKWebsiteDataStore.allWebsiteDataTypes()
+
+        dataStore.fetchDataRecords(ofTypes: types) { records in
+            dataStore.removeData(ofTypes: types, for: records) {
+
+                let alert = UIAlertController(
+                    title: "Cache Cleared".localized,
+                    message: "Website cache and cookies have been successfully removed.".localized,
+                    preferredStyle: .alert
+                )
+                alert.addAction(UIAlertAction(title: "OK".localized, style: .default))
+                DispatchQueue.main.async {
+                    viewController.present(alert, animated: true)
+                }
+            }
         }
     }
 

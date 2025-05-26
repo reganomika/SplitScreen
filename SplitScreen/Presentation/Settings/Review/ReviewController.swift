@@ -128,6 +128,11 @@ final class ReviewController: UIViewController {
         super.viewDidLoad()
         configureViewHierarchy()
         setupConstraints()
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        
         markFeedbackAsShown()
     }
     

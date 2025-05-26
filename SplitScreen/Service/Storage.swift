@@ -21,6 +21,11 @@ final class Storage {
         set { storageManager.set(newValue, forKey: reviewShownKey) }
     }
     
+    var hasSeenSplitScreenShown: Bool {
+        get { storageManager.get(forKey: hasSeenSplitScreenHint, defaultValue: false) }
+        set { storageManager.set(newValue, forKey: hasSeenSplitScreenHint) }
+    }
+    
     var buttonsTapNumber: Int {
         get { storageManager.get(forKey: userActionCounterKey, defaultValue: 0) }
         set { storageManager.set(newValue, forKey: userActionCounterKey) }
@@ -30,4 +35,5 @@ final class Storage {
     private let onboardingShownKey = "onboarding_key_dataBase"
     private let reviewShownKey = "review_key_dataBase"
     private let userActionCounterKey = "user_actions_key_dataBase"
+    private let hasSeenSplitScreenHint = "has_seen_split_screen_hint"
 }
