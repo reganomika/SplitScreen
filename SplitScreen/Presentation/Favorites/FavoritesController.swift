@@ -33,7 +33,7 @@ final class FavoritesController: BaseController {
 
     private func configureNavigation() {
         navigationTitle.text = "Favorites".localized
-        navigationTitle.font = .systemFont(ofSize: 22, weight: .bold)
+        navigationTitle.font = .font(weight: .bold, size: 22)
         configurNavigation(leftView: navigationTitle)
     }
 
@@ -42,7 +42,7 @@ final class FavoritesController: BaseController {
         segmentedControlView.snp.makeConstraints {
             $0.top.equalTo(view.safeAreaLayoutGuide).inset(73)
             $0.centerX.equalToSuperview()
-            $0.height.equalTo(51)
+            $0.height.equalTo(60)
             $0.left.right.equalToSuperview().inset(24)
         }
     }

@@ -49,7 +49,7 @@ final class TabBarController: UIViewController {
         tabBarView.snp.makeConstraints { make in
             make.left.right.equalToSuperview()
             make.bottom.equalToSuperview()
-            tabBarHeightConstraint = make.height.equalTo(UIDevice.current.hasHomeButton ? 68 : 102).constraint
+            tabBarHeightConstraint = make.height.equalTo(UIDevice.current.hasHomeButton ? 80 : 102).constraint
         }
     }
     
@@ -57,7 +57,7 @@ final class TabBarController: UIViewController {
         super.viewDidLayoutSubviews()
         
         let hasHomeIndicator = view.safeAreaInsets.bottom > 0
-        let height: CGFloat = hasHomeIndicator ? 102 : 68
+        let height: CGFloat = hasHomeIndicator ? 102 : 80
         tabBarHeightConstraint?.update(offset: height)
     }
 

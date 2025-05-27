@@ -33,7 +33,7 @@ final class TabBarView: UIView {
         .tabItem(
             selectedImage: UIImage(named: "favoritesTabSelected"),
             unselectedImage: UIImage(named: "favoritesTabUnselected"),
-            "favorites".localized
+            "Favorites".localized.lowercased()
         ),
         .tabItem(
             selectedImage: UIImage(named: "settingsTabSelected"),

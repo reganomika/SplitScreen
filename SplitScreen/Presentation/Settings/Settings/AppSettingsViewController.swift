@@ -266,7 +266,7 @@ final class PremiumPromotionCell: UITableViewCell {
         button.titleLabel?.font = .font(weight: .bold, size: 15)
         button.setTitleColor(.init(hex: "303030"), for: .normal)
         button.backgroundColor = .white
-        button.layer.cornerRadius = 12
+        button.layer.cornerRadius = 16
         button.isUserInteractionEnabled = false
         button.applyDropShadow(color: .init(hex: "10008D"), opacity: 0.2, offset: .init(width: 0, height: 4), radius: 21)
         
@@ -306,7 +306,7 @@ final class PremiumPromotionCell: UITableViewCell {
 
         button.snp.makeConstraints {
             $0.size.equalTo(CGSize(width: 120, height: 32))
-            $0.bottom.equalToSuperview().inset(11)
+            $0.bottom.equalToSuperview().inset(17)
             $0.leading.equalToSuperview().inset(159)
         }
     }

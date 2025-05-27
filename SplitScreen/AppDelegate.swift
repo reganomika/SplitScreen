@@ -7,7 +7,7 @@ import PremiumManager
 class AppDelegate: UIResponder, UIApplicationDelegate {
         
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-//        FirebaseApp.configure()
+        FirebaseApp.configure()
         PremiumManager.shared.configure(with: .init(apiKey: Config.apphudKey, debugMode: Config.debugMode))
         PremiumManager.shared.fetchProducts()
         
@@ -24,10 +24,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, configurationForConnecting connectingSceneSession: UISceneSession, options: UIScene.ConnectionOptions) -> UISceneConfiguration {
         return UISceneConfiguration(name: "Default Configuration", sessionRole: connectingSceneSession.role)
     }
-    
-//    func application(_ application: UIApplication, supportedInterfaceOrientationsFor window: UIWindow?) -> UIInterfaceOrientationMask {
-//        return window?.rootViewController?.topMostViewController.supportedInterfaceOrientations ?? .portrait
-//    }
 }
 
 extension AppDelegate: UNUserNotificationCenterDelegate {

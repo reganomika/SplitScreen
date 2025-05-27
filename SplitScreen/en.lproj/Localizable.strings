@@ -30,26 +30,36 @@
 "Cache Cleared" = "Cache Cleared";
 "Website cache and cookies have been successfully removed." = "Website cache and cookies have been successfully removed.";
 "OK" = "OK";
+
 "Stay multitasking" = "Stay multitasking";
-"multitasking" = "multitasking";
+"multitasking" = "multitasking"; // from top
+
 "Watch all in one, no need to switch between tabs" = "Watch all in one, no need\nto switch between tabs";
+
 "Keep favorites" = "Keep favorites";
-"favorites" = "favorites";
+"favorites" = "favorites"; // from top
+
 "Mark your favorite pages to keep them in library" = "Mark your favorite pages\nto keep them in library";
+
 "We value feedback" = "We value feedback";
-"feedback" = "feedback";
+"feedback" = "feedback"; // from top
+
 "Your thoughts on our app help us improve your experience" = "Your thoughts on our app help us\nimprove your experience";
+
 "Landscape mode" = "Landscape mode";
-"Landscape" = "Landscape";
+"Landscape" = "Landscape"; // from top
+
 "Flip your phone over and move the screens as it suits you." = "Flip your phone over and move\nthe screens as it suits you.";
 "Privacy" = "Privacy";
 "Restore" = "Restore";
 "Terms" = "Terms";
 "Continue" = "Continue";
 "Not now" = "Not now";
+
 "Split Screen Premium" = "Split Screen Premium";
+"Premium" = "Premium"; // from top
+
 "Take all from your device, saving favorite pages in second" = "Take all from your device,\nsaving favorite pages in second";
-"Premium" = "Premium";
 "Not sure? Enable free trial" = "Not sure? Enable free trial";
 "weekly" = "weekly";
 "monthly" = "monthly";
@@ -61,47 +71,7 @@
 "year" = "year";
 "day" = "day";
 "quarter" = "quarter";
-"" = "";
-"" = "";
-"" = "";
-"" = "";
-"" = "";
-"" = "";
-"" = "";
-"" = "";
-"" = "";
-"" = "";
-"" = "";
-"" = "";
-"" = "";
-"" = "";
-"" = "";
-"" = "";
-"" = "";
-"" = "";
-"" = "";
-"" = "";
-"" = "";
-"" = "";
-"" = "";
-"" = "";
-"" = "";
-"" = "";
-"" = "";
-"" = "";
-"" = "";
-"" = "";
-"" = "";
-"" = "";
-"" = "";
-"" = "";
-"" = "";
-"" = "";
-"" = "";
-"" = "";
-"" = "";
-"" = "";
-"" = "";
-"" = "";
-"" = "";
-"" = "";
+"Try for free" = "Try for free";
+"Day free trial" = "Day free trial";
+
+"Unlock content" = "Unlock content";

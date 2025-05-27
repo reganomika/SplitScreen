@@ -49,9 +49,9 @@ final class IconsController: UIViewController {
         
         static let collectionViewHeight: CGFloat = 164
         static let collectionViewBottomInset: CGFloat = 82
-        static let collectionViewTotalWidth: CGFloat = 345
+        static let collectionViewTotalWidth: CGFloat = 358
         static let itemSize: CGFloat = 164
-        static let minimumLineSpacing: CGFloat = 17
+        static let minimumLineSpacing: CGFloat = 30
         
     }
     

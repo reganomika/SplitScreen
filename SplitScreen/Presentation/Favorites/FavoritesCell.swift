@@ -32,6 +32,8 @@ final class FavoritesCell: UITableViewCell {
         iconImageView.contentMode = .scaleAspectFit
         iconImageView.layer.cornerRadius = 8
         iconImageView.clipsToBounds = true
+        iconImageView.layer.borderColor = UIColor.init(hex: "DBDBF3").cgColor
+        iconImageView.layer.borderWidth = 1
         contentView.addSubview(iconImageView)
         
         titleLabel.font = .font(weight: .semibold, size: 18)

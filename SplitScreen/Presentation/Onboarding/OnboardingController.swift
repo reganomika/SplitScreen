@@ -8,11 +8,11 @@ import ShadowImageButton
 import Utilities
 
 private enum Constants {
-    static let buttonHeight: CGFloat = UIScreen.isBigDevice ? 75 : 69
+    static let buttonHeight: CGFloat = UIScreen.isBigDevice ? 80 : 69
     static let buttonCornerRadius: CGFloat = 18
-    static let shadowRadius: CGFloat = 14.7
-    static let shadowOffset = CGSize(width: 0, height: 4)
-    static let shadowOpacity: Float = 0.6
+    static let shadowRadius: CGFloat = 9
+    static let shadowOffset = CGSize(width: 0, height: 8)
+    static let shadowOpacity: Float = 0.53
 }
 
 class OnboardingController: BaseController {
@@ -44,7 +44,7 @@ class OnboardingController: BaseController {
                 image: UIImage(named: "settingsPremiumBackground"),
                 cornerRadius: Constants.buttonCornerRadius,
                 shadowConfig: .init(
-                    color: UIColor(hex: "0044FF"),
+                    color: UIColor(hex: "#2583FF"),
                     opacity: Constants.shadowOpacity,
                     offset: Constants.shadowOffset,
                     radius: Constants.shadowRadius
@@ -96,16 +96,16 @@ class OnboardingController: BaseController {
         titleLabel.numberOfLines = 0
         
         let attributedString = NSMutableAttributedString(attributedString: model.title.attributedString(
-            font: .font(weight: .bold, size: 30),
+            font: .font(weight: .heavy, size: 32),
             aligment: .center,
-            color: .white,
+            color: .init(hex: "303030"),
             lineSpacing: 5,
             maxHeight: 50
         ))
         
         for higlitedText in model.higlitedTexts {
             let range = (model.title as NSString).range(of: higlitedText)
-            attributedString.addAttribute(.foregroundColor, value: UIColor.init(hex: "18D8FF"), range: range)
+            attributedString.addAttribute(.foregroundColor, value: UIColor.init(hex: "227CFA"), range: range)
             
             titleLabel.attributedText = attributedString
         }
@@ -115,9 +115,9 @@ class OnboardingController: BaseController {
         subtitleLabel.numberOfLines = 0
         
         subtitleLabel.attributedText = model.subtitle.attributedString(
-            font: .font(weight: .medium, size: 16),
+            font: .font(weight: .medium, size: 18),
             aligment: .center,
-            color: .init(hex: "ADACB8"),
+            color: .init(hex: "A3A3B9"),
             lineSpacing: 0,
             maxHeight: 20
         )
@@ -146,7 +146,7 @@ class OnboardingController: BaseController {
         view.addSubview(bottomStackView)
         
         bottomStackView.snp.makeConstraints { make in
-            make.top.equalTo(nextButton.snp.bottom).offset(21)
+            make.top.equalTo(nextButton.snp.bottom).offset(UIScreen.isLittleDevice ? 10 : 21)
             make.leading.trailing.equalToSuperview().inset(25)
             make.height.equalTo(18)
         }
@@ -157,23 +157,23 @@ class OnboardingController: BaseController {
         
         imageView.snp.makeConstraints { make in
             make.left.right.equalToSuperview()
-            make.top.equalTo(view.safeAreaLayoutGuide).inset(UIScreen.isBigDevice ? 200 : 175)
+            make.top.equalTo(view.safeAreaLayoutGuide).inset(UIScreen.isBigDevice ? 215 : 215)
             make.bottom.equalTo(nextButton.snp.top)
         }
         
         titleLabel.snp.makeConstraints { make in
-            make.top.equalTo(view.safeAreaLayoutGuide).inset(UIScreen.isBigDevice ? 45 : 33)
-            make.leading.trailing.equalToSuperview().inset(20)
+            make.top.equalTo(view.safeAreaLayoutGuide).inset(UIScreen.isBigDevice ? 61 : 61)
+            make.leading.trailing.equalToSuperview()
         }
         
         subtitleLabel.snp.makeConstraints { make in
-            make.top.equalTo(titleLabel.snp.bottom).inset(-16)
+            make.top.equalTo(titleLabel.snp.bottom).inset(UIScreen.isLittleDevice ? -20 : -16)
             make.centerX.equalToSuperview()
             make.width.equalTo(300)
         }
         
         nextButton.snp.makeConstraints { make in
-            make.bottom.equalTo(view.safeAreaLayoutGuide).offset(-69)
+            make.bottom.equalTo(view.safeAreaLayoutGuide).offset(-40)
             make.leading.trailing.equalToSuperview().inset(25)
             make.height.equalTo(Constants.buttonHeight)
         }
@@ -182,8 +182,8 @@ class OnboardingController: BaseController {
     func createBottomButton(title: String) -> UIButton {
         let button = UIButton()
         button.setTitle(title, for: .normal)
-        button.setTitleColor(.init(hex: "ADACB8"), for: .normal)
-        button.titleLabel?.font = .font(weight: .medium, size: Locale.current.languageCode == "de" ? 10 : 13)
+        button.setTitleColor(.init(hex: "B2B2B2"), for: .normal)
+        button.titleLabel?.font = .font(weight: .medium, size: Locale.current.languageCode == "de" ? 10 : 14)
         return button
     }
     

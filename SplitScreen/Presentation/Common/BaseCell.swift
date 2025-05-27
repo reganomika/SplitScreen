@@ -135,6 +135,8 @@ final class BaseCell: UITableViewCell {
             $0.right.equalToSuperview().inset(16)
             $0.width.height.equalTo(24)
         }
+        
+        customBackgroundView.applyDropShadow(color: .init(hex: "#888888"), opacity: 0.1, offset: .init(width: 0, height: 3), radius: 9)
     }
     
     func configure(type: SettingsOption) {

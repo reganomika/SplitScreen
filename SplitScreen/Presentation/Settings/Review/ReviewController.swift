@@ -21,7 +21,7 @@ final class ReviewController: UIViewController {
         
         static let contentBackground = UIColor.white
         static let contentCornerRadius: CGFloat = 28
-        static let contentHeight: CGFloat = 413
+        static let contentHeight: CGFloat = 440
         
         static let titleFontSize: CGFloat = 24
         static let subtitleFontSize: CGFloat = 18
@@ -42,7 +42,7 @@ final class ReviewController: UIViewController {
         static let imageTopInset: CGFloat = 0
         static let titleBottomOffset: CGFloat = 17
         static let subtitleBottomOffset: CGFloat = 31
-        static let buttonBottomOffset: CGFloat = 11
+        static let buttonBottomOffset: CGFloat = 20
         static let closeButtonBottomInset: CGFloat = 22
         
         static let shadowRadius: CGFloat = 14.7

@@ -1,13 +1,29 @@
 import UIKit
 import SnapKit
 import CustomBlurEffectView
+import PremiumManager
+import RxSwift
+import ShadowImageButton
 
 final class SplitScreenController: BaseController {
+    
+    private let bag = DisposeBag()
 
     private let mainContainer = UIView()
     private let topContainer = UIView()
     private let splitBar = UIView()
     private let bottomContainer = UIView()
+    
+    private enum Constants {
+        static let blurRadius: CGFloat = 3
+        static let blurColor = UIColor(hex: "171313")
+        static let blurAlpha: CGFloat = 0.3
+        
+        static let buttonCornerRadius: CGFloat = 18
+        static let shadowRadius: CGFloat = 9
+        static let shadowOffset = CGSize(width: 0, height: 8)
+        static let shadowOpacity: Float = 0.53
+    }
 
     private let topPanelController = WebPanelController()
     private let bottomPanelController = WebPanelController()
@@ -23,6 +39,34 @@ final class SplitScreenController: BaseController {
         let imageView = UIImageView(image: UIImage(named: "handler"))
         imageView.contentMode = .scaleAspectFill
         return imageView
+    }()
+    
+    lazy var nextButton: ShadowImageButton = {
+        let button = ShadowImageButton()
+        button.configure(
+            buttonConfig: .init(
+                title: "Unlock content".localized,
+                font: .font(
+                    weight: .bold,
+                    size: UIScreen.isBigDevice ? 20 : 18
+                ),
+                textColor: .white,
+                image: UIImage(named: "premium")
+            ),
+            backgroundImageConfig: .init(
+                image: UIImage(named: "settingsPremiumBackground"),
+                cornerRadius: Constants.buttonCornerRadius,
+                shadowConfig: .init(
+                    color: UIColor(hex: "#2583FF"),
+                    opacity: Constants.shadowOpacity,
+                    offset: Constants.shadowOffset,
+                    radius: Constants.shadowRadius
+                )
+            )
+        )
+        button.backgroundColor = .init(hex: "0055F1")
+        button.add(target: self, action: #selector(premiumButtonTapped))
+        return button
     }()
 
     private var topHeightConstraint: Constraint?
@@ -41,8 +85,19 @@ final class SplitScreenController: BaseController {
     }
 
     // MARK: - Hint UI
-
-    private let hintOverlay = CustomBlurEffectView()
+    
+    private let hintOverlay = CustomBlurEffectView().apply {
+        $0.blurRadius = Constants.blurRadius
+        $0.colorTint = Constants.blurColor
+        $0.colorTintAlpha = Constants.blurAlpha
+    }
+    
+    private let premiumBlur = CustomBlurEffectView().apply {
+        $0.blurRadius = Constants.blurRadius
+        $0.colorTint = Constants.blurColor
+        $0.colorTintAlpha = Constants.blurAlpha
+    }
+    
     private let hintBubble = UIImageView(image: UIImage(named: "hintBubble"))
 
     private let hintIcon: UIImageView = {
@@ -87,6 +142,12 @@ final class SplitScreenController: BaseController {
         if !Storage.shared.hasSeenSplitScreenShown {
             showSplitHint()
         }
+        
+        PremiumManager.shared.isPremium
+            .observe(on: MainScheduler.instance)
+            .subscribe(onNext: { [weak self] isPremium in
+                self?.premiumBlur.isHidden = isPremium
+            }).disposed(by: bag)
     }
 
     private func setupUI() {
@@ -135,6 +196,18 @@ final class SplitScreenController: BaseController {
 
         embed(topPanelController, into: topContainer)
         embed(bottomPanelController, into: bottomContainer)
+        
+        bottomContainer.addSubview(premiumBlur)
+        premiumBlur.snp.makeConstraints { make in
+            make.edges.equalToSuperview().inset(-10)
+        }
+        
+        premiumBlur.addSubviews(nextButton)
+        nextButton.snp.makeConstraints { make in
+            make.center.equalToSuperview()
+            make.height.equalTo(69)
+            make.width.equalTo(264)
+        }
     }
 
     private func embed(_ child: UIViewController, into container: UIView) {
@@ -291,7 +364,9 @@ final class SplitScreenController: BaseController {
         })
     }
     
-//    override var supportedInterfaceOrientations: UIInterfaceOrientationMask {
-//        return [.portrait, .landscapeLeft, .landscapeRight, .portraitUpsideDown]
-//    }
+    @objc private func premiumButtonTapped() {
+        UIImpactFeedbackGenerator(style: .light).impactOccurred()
+        
+        PaywallManager.shared.showPaywall()
+    }
 }

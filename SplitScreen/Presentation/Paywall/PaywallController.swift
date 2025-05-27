@@ -12,8 +12,8 @@ class PaywallController: OnboardingController {
 
     private let premiumManager = PremiumManager.shared
 
-    private lazy var topProduct = premiumManager.products.value.first(where: { $0.skProduct?.introductoryPrice != nil })
-    private lazy var bottomProduct = premiumManager.products.value.first(where: { $0.skProduct?.introductoryPrice == nil })
+    private lazy var topProduct = premiumManager.products.value.first(where: { $0.skProduct?.introductoryPrice == nil })
+    private lazy var bottomProduct = premiumManager.products.value.first(where: { $0.skProduct?.introductoryPrice != nil })
     
     public var customTitle: String = "" {
         didSet {
@@ -24,9 +24,9 @@ class PaywallController: OnboardingController {
     public var customSubtitle: String = "" {
         didSet {
             subtitleLabel.attributedText = customSubtitle.attributedString(
-                font: .font(weight: .medium, size: 16),
+                font: .font(weight: .medium, size: 18),
                 aligment: .center,
-                color: .init(hex: "ADACB8"),
+                color: .init(hex: "A3A3B9"),
                 lineSpacing: 0,
                 maxHeight: 20
             )
@@ -58,13 +58,9 @@ class PaywallController: OnboardingController {
                 }
             }()
 
-            if let trialPeriodDays = product.trialPeriodDays, trialPeriodDays > 0 {
-                subtitle = "\(trialPeriodDays) " + "days trial".localized
-                rightTitle = "\(symbol)\(String(format: "%.2f", price))/\(duration.rawValue.localized)"
-            } else {
-                subtitle = "\(symbol)\(String(format: "%.2f", price))/\(duration.rawValue.localized)"
-                rightTitle = "\(symbol)\(String(format: "%.2f", (price / days) * 7))" + "/" + "week".localized.lowercased()
-            }
+            
+            rightTitle = "\(symbol)\(String(format: "%.2f", (price / days) * 7))" + "/" + "week".localized.lowercased()
+ 
         }
 
         view.configure(
@@ -100,9 +96,13 @@ class PaywallController: OnboardingController {
                 default: return 1
                 }
             }()
-
-            subtitle = "\(symbol)\(String(format: "%.2f", price))/\(duration.rawValue.localized)"
-            rightTitle = "\(symbol)\(String(format: "%.2f", (price / days) * 7))" + "/" + "week".localized.lowercased()
+            
+            if let trialPeriodDays = product.trialPeriodDays, trialPeriodDays > 0 {
+                subtitle = "\(trialPeriodDays)-" + "Day free trial".localized
+                rightTitle = "\(symbol)\(String(format: "%.2f", price))/\(duration.rawValue.localized)"
+            } else {
+                rightTitle = "\(symbol)\(String(format: "%.2f", (price / days) * 7))" + "/" + "week".localized.lowercased()
+            }
         }
 
         view.configure(
@@ -134,8 +134,8 @@ class PaywallController: OnboardingController {
 
     private let switchLabel: UILabel = {
         let label = UILabel()
-        label.font = .font(weight: .bold, size: 16)
-        label.textColor = .white
+        label.font = .font(weight: .medium, size: 15)
+        label.textColor = .init(hex: "303030")
         label.text = "Not sure? Enable free trial".localized
         return label
     }()
@@ -174,24 +174,24 @@ class PaywallController: OnboardingController {
         customTitle = "Split Screen Premium".localized
         customSubtitle = "Take all from your device, saving favorite pages in second".localized
 
-        imageView.image = UIImage(named: "paywall")
+        imageView.image = UIImage(named: UIScreen.isBigDevice ? "paywallBig" : "paywall")
 
-        productToPurchase = bottomProduct
-        topOptionView.isSelectedOption = false
-        bottomOptionView.isSelectedOption = true
+        productToPurchase = topProduct
+        topOptionView.isSelectedOption = true
+        bottomOptionView.isSelectedOption = false
         switchView.isOn = false
 
         view.addSubview(switchStackView)
         view.addSubview(optionsStackView)
 
         switchStackView.snp.makeConstraints {
-            $0.bottom.equalTo(nextButton.snp.top).inset(-12)
+            $0.bottom.equalTo(nextButton.snp.top).inset(-16)
             $0.height.equalTo(31)
-            $0.left.right.equalToSuperview().inset(41)
+            $0.left.right.equalToSuperview().inset(26)
         }
 
         optionsStackView.snp.makeConstraints {
-            $0.bottom.equalTo(nextButton.snp.top).inset(-59)
+            $0.bottom.equalTo(nextButton.snp.top).inset(-63)
             $0.left.right.equalToSuperview().inset(26)
             $0.height.equalTo(150)
         }
@@ -202,9 +202,20 @@ class PaywallController: OnboardingController {
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        imageView.snp.updateConstraints {
-            $0.bottom.equalTo(nextButton.snp.top).inset(-209)
+        if UIScreen.isBigDevice {
+//            imageView.contentMode = .scaleAspectFit
+            
+            imageView.snp.remakeConstraints {
+                $0.left.right.equalToSuperview()
+                $0.bottom.equalTo(nextButton.snp.top).inset(-215)
+            }
+        } else {
+            imageView.snp.updateConstraints {
+                $0.bottom.equalTo(nextButton.snp.top).inset(-209)
+            }
         }
+ 
+       
     }
 
     override func setupButtons() {
@@ -230,7 +241,7 @@ class PaywallController: OnboardingController {
         view.addSubview(bottomStackView)
 
         bottomStackView.snp.remakeConstraints {
-            $0.top.equalTo(nextButton.snp.bottom).offset(21)
+            $0.top.equalTo(nextButton.snp.bottom).offset(UIScreen.isLittleDevice ? 10 : 21)
             $0.leading.trailing.equalToSuperview().inset(25)
             $0.height.equalTo(18)
         }
@@ -238,16 +249,16 @@ class PaywallController: OnboardingController {
     
     private func updateTitle() {
         let attributedString = NSMutableAttributedString(attributedString: customTitle.attributedString(
-            font: .font(weight: .bold, size: 28),
+            font: .font(weight: .heavy, size: 29),
             aligment: .center,
-            color: .white,
+            color: .init(hex: "303030"),
             lineSpacing: 5,
             maxHeight: 50
         ))
         
         if !highlightedText.isEmpty {
             let range = (customTitle as NSString).range(of: highlightedText)
-            attributedString.addAttribute(.foregroundColor, value: UIColor.init(hex: "00BFFF"), range: range)
+            attributedString.addAttribute(.foregroundColor, value: UIColor.init(hex: "227CFA"), range: range)
         }
         
         titleLabel.attributedText = attributedString
@@ -271,9 +282,9 @@ class PaywallController: OnboardingController {
         UIImpactFeedbackGenerator(style: .light).impactOccurred()
 
         if sender.isOn {
-            topOptionTapped()
-        } else {
             bottomOptionTapped()
+        } else {
+            topOptionTapped()
         }
     }
 
@@ -282,8 +293,9 @@ class PaywallController: OnboardingController {
         productToPurchase = topProduct
         topOptionView.isSelectedOption = true
         bottomOptionView.isSelectedOption = false
-        switchView.isOn = true
-        nextButton.updateTitle(title: "Try for free".localized)
+        switchView.isOn = false
+        
+        nextButton.updateTitle(title: "Continue".localized)
     }
 
     @objc func bottomOptionTapped() {
@@ -291,7 +303,7 @@ class PaywallController: OnboardingController {
         productToPurchase = bottomProduct
         topOptionView.isSelectedOption = false
         bottomOptionView.isSelectedOption = true
-        switchView.isOn = false
-        nextButton.updateTitle(title: "Continue".localized)
+        switchView.isOn = true
+        nextButton.updateTitle(title: "Try for free".localized)
     }
 }

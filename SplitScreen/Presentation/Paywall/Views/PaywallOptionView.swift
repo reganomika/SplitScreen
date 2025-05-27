@@ -12,25 +12,23 @@ final class PaywallOptionView: UIView {
         }
     }
     
-    lazy var imageView: UIImageView = {
-        UIImageView(image: UIImage(named: "paywall_unselected"))
-    }()
-    
-    lazy var backgroundimageView: UIImageView = {
-        UIImageView(image: UIImage(named: "baseCellBackground"))
+    lazy var backgroundimageView: UIView = {
+        let view = UIView()
+        view.backgroundColor = .white
+        return view
     }()
     
     lazy var titleLabel: UILabel = {
         let label = UILabel()
         label.font = .font(weight: .bold, size: 18)
-        label.textColor = .white
+        label.textColor = .init(hex: "303030")
         return label
     }()
     
     lazy var subtitleLabel: UILabel = {
         let label = UILabel()
-        label.textColor = .init(hex: "AFB0AF")
-        label.font = .font(weight: .medium, size: 16)
+        label.textColor = .init(hex: "227CFA")
+        label.font = .font(weight: .semibold, size: 14)
         label.minimumScaleFactor = 0.5
         label.adjustsFontSizeToFitWidth = true
         label.textAlignment = .left
@@ -39,8 +37,8 @@ final class PaywallOptionView: UIView {
     
     lazy var rightTitleLabel: UILabel = {
         let label = UILabel()
-        label.textColor = .white
-        label.font = .font(weight: .medium, size: 16)
+        label.textColor = .init(hex: "303030")
+        label.font = .font(weight: .semibold, size: 16)
         label.textAlignment = .right
         return label
     }()
@@ -54,7 +52,7 @@ final class PaywallOptionView: UIView {
     }()
     
     lazy var horizontalStackView: UIStackView = {
-        let stackView = UIStackView(arrangedSubviews: [imageView, stackView, rightTitleLabel])
+        let stackView = UIStackView(arrangedSubviews: [stackView, rightTitleLabel])
         stackView.axis = .horizontal
         stackView.alignment = .center
         stackView.distribution = .fill
@@ -91,7 +89,7 @@ final class PaywallOptionView: UIView {
     func setupUI() {
         addSubviews(backgroundimageView, horizontalStackView)
         
-        layer.cornerRadius = 16
+        layer.cornerRadius = 20
         layer.borderWidth = 1
         layer.borderColor = UIColor.white.withAlphaComponent(0.1).cgColor
         clipsToBounds = true
@@ -108,22 +106,16 @@ final class PaywallOptionView: UIView {
             make.left.right.equalToSuperview().inset(20)
             make.top.bottom.equalToSuperview()
         }
-        
-        imageView.snp.makeConstraints { make in
-            make.height.width.equalTo(24)
-        }
     }
     
     func updateAppearance() {
         
-        imageView.image = UIImage(named: isSelectedOption ? "paywall_selected" : "paywall_unselected" )
-
         if isSelectedOption {
             layer.borderColor = UIColor.clear.cgColor
             layer.borderWidth = 0
             applyGradientBorder(
-                colors: [UIColor(hex: "#18FBFF"), UIColor(hex: "#006FFF")],
-                lineWidth: 6, cornerRadius: 16
+                colors: [UIColor(hex: "#38C2FE"), UIColor(hex: "#325FFA")],
+                lineWidth: 6, cornerRadius: 20
             )
         } else {
             layer.borderColor = UIColor.white.withAlphaComponent(0.1).cgColor
