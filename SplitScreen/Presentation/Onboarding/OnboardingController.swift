@@ -17,6 +17,10 @@ private enum Constants {
 
 class OnboardingController: BaseController {
     
+    override var supportedInterfaceOrientations: UIInterfaceOrientationMask {
+        return .portrait
+    }
+    
     let imageView = UIImageView()
     let titleLabel = UILabel()
     let subtitleLabel = UILabel()

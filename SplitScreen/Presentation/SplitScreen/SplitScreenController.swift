@@ -26,6 +26,19 @@ final class SplitScreenController: BaseController {
     }()
 
     private var topHeightConstraint: Constraint?
+    private var leftWidthConstraint: Constraint?
+    
+    private var isLandscape: Bool {
+        return view.bounds.width > view.bounds.height
+    }
+
+    override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
+        super.viewWillTransition(to: size, with: coordinator)
+
+        coordinator.animate(alongsideTransition: { _ in
+            self.updateLayout(for: size)
+        })
+    }
 
     // MARK: - Hint UI
 
@@ -47,10 +60,29 @@ final class SplitScreenController: BaseController {
         label.textColor = UIColor(hex: "303030")
         return label
     }()
+    
+    private var lastOrientation: UIDeviceOrientation?
+
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        lastOrientation = UIDevice.current.orientation
+        updateLayout(for: view.bounds.size)
+    }
+
+    override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
+        super.traitCollectionDidChange(previousTraitCollection)
+
+        let current = UIDevice.current.orientation
+        guard current.isValidInterfaceOrientation, current != lastOrientation else { return }
+
+        lastOrientation = current
+        updateLayout(for: view.bounds.size)
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
         setupUI()
+        updateLayout(for: view.bounds.size)
 
         if !Storage.shared.hasSeenSplitScreenShown {
             showSplitHint()
@@ -117,16 +149,101 @@ final class SplitScreenController: BaseController {
         let translation = gesture.translation(in: view)
         gesture.setTranslation(.zero, in: view)
 
-        guard let constraint = topHeightConstraint else { return }
-        let currentHeight = constraint.layoutConstraints.first?.constant ?? 0
-        let newHeight = max(100, min(currentHeight + translation.y, view.bounds.height - 100))
+        if isLandscape {
+            guard let constraint = leftWidthConstraint else { return }
+            let currentWidth = constraint.layoutConstraints.first?.constant ?? 0
+            let newWidth = max(100, min(currentWidth + translation.x, view.bounds.width - 100))
+            constraint.update(offset: newWidth)
+        } else {
+            guard let constraint = topHeightConstraint else { return }
+            let currentHeight = constraint.layoutConstraints.first?.constant ?? 0
+            let newHeight = max(100, min(currentHeight + translation.y, view.bounds.height - 100))
 
-        constraint.update(offset: newHeight)
+            constraint.update(offset: newHeight)
+        }
+
+        view.layoutIfNeeded()
     }
 
     func openPage(urlString: String, position: SplitScreenPosition) {
         let controller = position == .top ? topPanelController : bottomPanelController
         controller.openWebsite(urlString: urlString)
+    }
+    
+    private func updateLayout(for size: CGSize) {
+        let isLandscape = size.width > size.height
+
+        topHeightConstraint?.deactivate()
+        leftWidthConstraint?.deactivate()
+
+        topContainer.snp.removeConstraints()
+        bottomContainer.snp.removeConstraints()
+        splitBar.snp.removeConstraints()
+
+        if isLandscape {
+            imageView.image = UIImage(named: "handlerVertical")
+
+            topContainer.snp.makeConstraints {
+                leftWidthConstraint = $0.width.equalTo(size.width / 2).priority(.high).constraint
+                $0.left.top.bottom.equalToSuperview()
+            }
+
+            splitBar.snp.makeConstraints {
+                $0.left.equalTo(topContainer.snp.right)
+                $0.top.bottom.equalToSuperview()
+                $0.width.equalTo(19)
+            }
+
+            bottomContainer.snp.makeConstraints {
+                $0.left.equalTo(splitBar.snp.right)
+                $0.top.bottom.right.equalToSuperview()
+            }
+
+            backgroundImageView.snp.remakeConstraints {
+                $0.width.equalTo(7)
+                $0.top.bottom.equalToSuperview()
+                $0.centerX.equalToSuperview()
+            }
+
+            imageView.snp.remakeConstraints {
+                $0.center.equalToSuperview()
+                $0.width.equalTo(19)
+                $0.height.equalTo(85)
+            }
+
+        } else {
+            imageView.image = UIImage(named: "handler")
+
+            topContainer.snp.makeConstraints {
+                topHeightConstraint = $0.height.equalTo(size.height / 2).constraint
+                $0.left.right.top.equalToSuperview()
+            }
+
+            splitBar.snp.makeConstraints {
+                $0.top.equalTo(topContainer.snp.bottom)
+                $0.left.right.equalToSuperview()
+                $0.height.equalTo(19)
+            }
+
+            bottomContainer.snp.makeConstraints {
+                $0.top.equalTo(splitBar.snp.bottom)
+                $0.left.right.bottom.equalToSuperview()
+            }
+
+            backgroundImageView.snp.remakeConstraints {
+                $0.height.equalTo(7)
+                $0.left.right.equalToSuperview()
+                $0.centerY.equalToSuperview()
+            }
+
+            imageView.snp.remakeConstraints {
+                $0.center.equalToSuperview()
+                $0.width.equalTo(85)
+                $0.height.equalTo(19)
+            }
+        }
+
+        view.layoutIfNeeded()
     }
 
     // MARK: - Hint
@@ -173,4 +290,8 @@ final class SplitScreenController: BaseController {
             self.hintOverlay.removeFromSuperview()
         })
     }
+    
+//    override var supportedInterfaceOrientations: UIInterfaceOrientationMask {
+//        return [.portrait, .landscapeLeft, .landscapeRight, .portraitUpsideDown]
+//    }
 }

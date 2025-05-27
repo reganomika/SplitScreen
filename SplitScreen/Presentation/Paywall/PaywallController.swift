@@ -136,7 +136,7 @@ class PaywallController: OnboardingController {
         let label = UILabel()
         label.font = .font(weight: .bold, size: 16)
         label.textColor = .white
-        label.text = "Start free trial".localized
+        label.text = "Not sure? Enable free trial".localized
         return label
     }()
 
@@ -147,7 +147,7 @@ class PaywallController: OnboardingController {
         return stack
     }()
 
-    private let highlightedText: String = "Unlimited".localized
+    private let highlightedText: String = "Premium".localized
     private let isFromOnboarding: Bool
 
     private lazy var product: ApphudProduct? = topProduct
@@ -171,10 +171,10 @@ class PaywallController: OnboardingController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        customTitle = "Air Printer Unlimited".localized
-        customSubtitle = "Print without limits, experience faster processing, and files storage".localized
+        customTitle = "Split Screen Premium".localized
+        customSubtitle = "Take all from your device, saving favorite pages in second".localized
 
-        imageView.image = UIImage(named: "paywall_1")
+        imageView.image = UIImage(named: "paywall")
 
         productToPurchase = bottomProduct
         topOptionView.isSelectedOption = false

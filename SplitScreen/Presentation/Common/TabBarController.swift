@@ -18,6 +18,8 @@ final class TabBarController: UIViewController {
     ]
     
     private var currentViewController: UIViewController?
+    
+    private var tabBarHeightConstraint: Constraint?
 
     init() {
         super.init(nibName: nil, bundle: nil)
@@ -47,8 +49,16 @@ final class TabBarController: UIViewController {
         tabBarView.snp.makeConstraints { make in
             make.left.right.equalToSuperview()
             make.bottom.equalToSuperview()
-            make.height.equalTo(UIDevice.current.hasHomeButton ? 68 : 102)
+            tabBarHeightConstraint = make.height.equalTo(UIDevice.current.hasHomeButton ? 68 : 102).constraint
         }
+    }
+    
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        
+        let hasHomeIndicator = view.safeAreaInsets.bottom > 0
+        let height: CGFloat = hasHomeIndicator ? 102 : 68
+        tabBarHeightConstraint?.update(offset: height)
     }
 
     func switchToViewController(_ index: Int) {
@@ -79,5 +89,20 @@ extension TabBarController: TabBarViewDelegate {
         UIImpactFeedbackGenerator(style: .light).impactOccurred()
       
         switchToViewController(index)
+    }
+}
+
+extension UIViewController {
+    var topMostViewController: UIViewController {
+        if let nav = self as? UINavigationController {
+            return nav.visibleViewController?.topMostViewController ?? nav
+        }
+        if let tab = self as? UITabBarController {
+            return tab.selectedViewController?.topMostViewController ?? tab
+        }
+        if let presented = presentedViewController {
+            return presented.topMostViewController
+        }
+        return self
     }
 }

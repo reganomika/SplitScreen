@@ -10,6 +10,8 @@ final class FavoritesController: BaseController {
     private let segmentedControlView = SegmentedControlView()
     private let tableView = UITableView(frame: .zero, style: .plain)
     private let emptyStateView = UIView()
+    
+    private var emptyStateHeightConstraint: Constraint?
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -18,6 +20,15 @@ final class FavoritesController: BaseController {
         setupSegmentedControl()
         setupEmptyStateView()
         bindViewModel()
+    }
+    
+    override func viewWillLayoutSubviews() {
+        super.viewWillLayoutSubviews()
+
+        let isLandscape = view.bounds.width > view.bounds.height
+        let newHeight: CGFloat = isLandscape ? 220 : 327
+
+        emptyStateHeightConstraint?.update(offset: newHeight)
     }
 
     private func configureNavigation() {
@@ -88,7 +99,7 @@ final class FavoritesController: BaseController {
         }
 
         emptyStateView.snp.makeConstraints {
-            $0.height.equalTo(327)
+            emptyStateHeightConstraint = $0.height.equalTo(327).constraint
             $0.left.right.equalToSuperview().inset(24)
             $0.top.equalTo(segmentedControlView.snp.bottom).inset(-20)
         }

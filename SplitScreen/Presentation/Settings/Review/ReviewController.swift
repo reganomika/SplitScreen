@@ -8,6 +8,10 @@ import Utilities
 
 final class ReviewController: UIViewController {
     
+    override var supportedInterfaceOrientations: UIInterfaceOrientationMask {
+        return .portrait
+    }
+    
     // MARK: - Constants
     
     private enum Constants {
